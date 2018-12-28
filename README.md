@@ -2,12 +2,11 @@
 
 ## Face Detection and Identification for Smart Toy: Geomex Soft.
 
-### Jeong-Gun Lee
+#### Jeong-Gun Lee
+> School of Software, Hallym University
+> Email : jeonggun.lee@gmail.com
 
-School of Software, Hallym University
-
-jeonggun.lee@gmail.com
-
+*  *  *
 
 # References
 
