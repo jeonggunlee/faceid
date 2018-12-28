@@ -1,6 +1,12 @@
 # faceid
-Face Detection and Identification for Smart Toy: Geomex Soft.
 
+## Face Detection and Identification for Smart Toy: Geomex Soft.
+
+### Jeong-Gun Lee
+
+School of Software, Hallym University
+
+jeonggun.lee@gmail.com
 
 
 # References
