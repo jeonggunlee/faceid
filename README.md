@@ -81,7 +81,7 @@ cv2.destroyAllWindows()
 일단 영상을 쉽게 받아들이고 간단히 처리할 수 있는 느낌이여서 재밌다. ^^
 
 *  *  *
-다음은 영상으로 부터 얼굴 부분을 검출한 후에 이후 절차인 인식을 위하여 학습을 진행하는 코드를 보여준다.
+다음은 영상으로 부터 얼굴 부분을 검출한 후에 ```검출된 얼굴 이미지를 이용하여 이후 절차인 인식을 위하여 학습```을 진행하는 코드를 보여준다 (```faces-train.py```).
 
 ```python
 import cv2
@@ -138,7 +138,7 @@ recognizer.save("recognizers/face-trainner.yml")
 
 *  *  *
 
-최종적으로 학습된 모델에 근거하여 영상으로 부터 검출된 얼굴에 대한 identification을 진행한다.
+최종적으로 학습된 모델에 근거하여 영상으로 부터 ```검출된 얼굴에 대한 identification을 진행```한다 ((```faces.py```)).
 
 ```python
 import numpy as np
