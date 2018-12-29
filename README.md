@@ -138,8 +138,10 @@ recognizer.save("recognizers/face-trainner.yml")
 
 이후에 얼굴 데이터베이스로 사용되는 디렉토리에 ```jeong-gun``` 디렉토리를 만들고 나의 사진을 9장 찍어서 넣었다.
 
-![ ](./img/faces)
 ![Directory](./img/dir.PNG)
+
+![Jeong-Gun Face](./img/faces_jglee.png)
+
 
 *  *  *
 
