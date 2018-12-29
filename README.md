@@ -14,7 +14,13 @@
    1. Face Recognition: 영상으로 부터 사람의 얼굴 부분을 검출
    2. Face Identification: 검출된 얼굴을 기존 학습된 데이터를 통해 ```누구```인지 파악
 
+이러한 작업을 진행함에 있어 동영상 강의 및 코드를 오픈한 것이 있어 이를 기반으로 작업을 진행하고자 한다.
 
+본 문서는 ```https://github.com/codingforentrepreneurs/OpenCV-Python-Series```에 기술된 코드에 대한 분석 및 응용에 대한 문서이다 [1].
+
+*  *  *
+
+본 문서는 ```https://github.com/codingforentrepreneurs/OpenCV-Python-Series```에 기술된 코드에 대한 분석 및 응용에 대한 문서이다.
 
 *  *  *
 # References
