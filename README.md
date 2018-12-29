@@ -102,6 +102,7 @@ label_ids = {}   # 라벨 리스트
 x_train = []     # 얼굴 데이터 리스트
 y_labels = []    # 해당 라벨 리스트
 
+# 메인 for loop: 얼굴 사진을 추출하고 학습을 위한 데이터를 준비하는 단계
 for root, dirs, files in os.walk(image_dir):
     for file in files:
 	if file.endswith("png") or file.endswith("jpg"):
@@ -143,6 +144,23 @@ recognizer.save("recognizers/face-trainner.yml")
 
 ![Jeong-Gun Face](./img/faces_jglee.png)
 
+
+다음은 메인 코드의 for 문이 완료된 후에 다음과 같은 프린트 문을 통하여 ```y_labels``` 및 ```labels_ids```가 어떤 데이터를 포함하고 있는지 알 수 있다.
+
+```
+print(y_labels)
+print(label_ids)
+```
+
+위의 프린트 문을 통하여 나온 내용은 다음과 같다.
+```
+C:\Users\eulia\Python\OpenCV-Python-Series\src>python faces-train.py
+[0, 0, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 6, 6, 6, 6]
+{'emilia-clarke': 0, 'fun': 1, 'jeong-gun': 2, 'justin': 3, 'kit-harington': 4, 'logo': 5, 'nikolaj-coster-waldau': 6, 'peter-dinklage': 7}
+```
+전체 7개의 디렉토리중에 얼굴이 검출된 디렉토리는 0, 2, 3, 4, 6, 7로 6개의 디렉토리에서 검출되었으며, 1 (fun)과 5 (logo)에 해당하는 디렉토리에서는 얼굴이 검출되지 않았음을 알 수 있다 (실제 fun과 log 디렉토리는 얼굴 사진을 포함하고 있지 않다).
+
+더불어, 나의 경우 9장의 사진을 ```jeong-gun``` 디렉토리에 넣었지만, 3장에서만 얼굴을 검출하였고, 이 3장만 학습에 사용되었음을 알 수 있다.
 
 *  *  *
 
