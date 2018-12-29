@@ -85,10 +85,10 @@ cv2.destroyAllWindows()
 
 ```python
 import cv2
-import os
 import numpy as np
-from PIL import Image
-import pickle
+import os              # os 모듈은 Operating System의 약자로서 운영체제에서 제공되는 여러 기능을 파이썬에서 수행할 수 있게 해줌
+from PIL import Image  # Pillow는 PIL(Python Image Library)를 계승한 라이브러리로, PIL 대신 사용하는 파이썬 라이브러리이다
+import pickle          # pickle 모듈은 파이썬 객체를 파일로 저장하고 로딩하는 기능을 제공
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 image_dir = os.path.join(BASE_DIR, "images")
@@ -96,10 +96,11 @@ image_dir = os.path.join(BASE_DIR, "images")
 face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
-current_id = 0
-label_ids = {}
-y_labels = []
-x_train = []
+# 얼굴 데이터 획득을 위한 자료 구조
+current_id = 0   # 구분할 얼굴의 수
+label_ids = {}   # 라벨 리스트
+x_train = []     # 얼굴 데이터 리스트
+y_labels = []    # 해당 라벨 리스트
 
 for root, dirs, files in os.walk(image_dir):
     for file in files:
