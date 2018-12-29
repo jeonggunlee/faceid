@@ -40,6 +40,29 @@ Receiving objects: 100% (216/216), 17.13 MiB | 2.90 MiB/s, done.
 Resolving deltas: 100% (91/91), done.
 ```
 
+cloning한 코드에서 가장 기본적인 코드인 ```base.py```의 코드를 살펴보면 아래와 같다.
+
+```python
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture(0)
+
+while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Display the resulting frame
+    cv2.imshow('frame',frame)
+    if cv2.waitKey(20) & 0xFF == ord('q'):
+        break
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
 *  *  *
 # References
 
