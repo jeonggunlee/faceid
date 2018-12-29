@@ -27,6 +27,18 @@ run pip install opencv-python-headless if you need only main modules
 run pip install opencv-contrib-python-headless if you need both main and contrib modules 
 ```
 
+이후, 해당 코드를 Github로 부터 cloning 한다.
+
+```
+git clone https://github.com/codingforentrepreneurs/OpenCV-Python-Series
+
+Cloning into 'OpenCV-Python-Series'...
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 216 (delta 0), reused 0 (delta 0), pack-reused 215
+Receiving objects: 100% (216/216), 17.13 MiB | 2.90 MiB/s, done.
+Resolving deltas: 100% (91/91), done.
+```
 
 *  *  *
 # References
