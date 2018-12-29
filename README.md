@@ -215,7 +215,8 @@ while(True):
     	id_, conf = recognizer.predict(roi_gray)
 	
 	# 신뢰도가 4보다 크거나 같고 85보다 작거나 같을때,  인식된 이름 쓰기
-	# 근데 "conf>=4 and conf <= 85" 조건이 조금 이해가 안된다. ???
+	# 신뢰도는 작은 값일 수록 좋은 추측임을 의미한다.
+	# 신뢰도는 distance metric으로 계산.
     	if conf>=4 and conf <= 85:
     	    #print(5: #id_)
     	    #print(labels[id_])
