@@ -264,7 +264,7 @@ cv2.destroyAllWindows()
 
 ## Further Work
 
-[Face Recognition](https://pypi.org/project/face_recognition/) 에 대해서 살펴보고 활용하기.
+[Face Recognition](https://pypi.org/project/face_recognition/) 에 대해서 살펴보고 활용하기 [8].
 >Recognize and manipulate faces from Python or from the command line with
 >the world’s simplest face recognition library.
 >Built using dlib’s state-of-the-art face recognition
@@ -286,3 +286,4 @@ cv2.destroyAllWindows()
 5. [음성인식: 라즈베리파이+Google Assist](https://blog.naver.com/renucs/221297676020)
 6. [라즈베리파이에 구글 음성인식 사용하기 (최신 샘플코드 + 한국어)](http://diy-project.tistory.com/91)
 7. [OBJECT DETECTION : FACE DETECTION USING HAAR CASCADE CLASSFIERS](https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php)
+8. [Face Recognition](https://github.com/ageitgey/face_recognition)
