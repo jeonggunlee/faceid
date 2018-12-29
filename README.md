@@ -240,4 +240,5 @@ cv2.destroyAllWindows()
 2. https://pypi.org/project/opencv-python/
 3. https://opencv-python.readthedocs.io/en/latest/doc/02.videoStart/videoStart.html
 4. [Raspberry Pi Face Recognition](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
-5. [라즈베리파이+Google Assist](https://blog.naver.com/renucs/221297676020)
+5. [음성인식: 라즈베리파이+Google Assist](https://blog.naver.com/renucs/221297676020)
+6. [라즈베리파이에 구글 음성인식 사용하기 (최신 샘플코드 + 한국어)](http://diy-project.tistory.com/91)
