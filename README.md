@@ -47,20 +47,37 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture(0)
+# [3] 참조
+# cap 이 정상적으로 open이 되었는지 확인하기 위해서 cap.isOpen() 으로 확인가능
+# cap.get(prodId)/cap.set(propId, value)을 통해서 속성 변경이 가능.
+# 3은 width, 4는 heigh
+print 'width: {0}, height: {1}'.format(cap.get(3),cap.get(4))
+cap.set(3,320)
+cap.set(4,240)
+
 
 while(True):
     # Capture frame-by-frame
+    # ret : frame capture결과(boolean)
+    # frame : Capture한 frame
     ret, frame = cap.read()
-
-    # Display the resulting frame
-    cv2.imshow('frame',frame)
-    if cv2.waitKey(20) & 0xFF == ord('q'):
-        break
+    
+    if (ret):
+        # Display the resulting frame
+        cv2.imshow('frame',frame)
+        # Grayscale을 원할 경우 image를 Grayscale로 Convert함.
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow('frame', gray)
+        
+        if cv2.waitKey(20) & 0xFF == ord('q'):
+            break
 
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
 ```
+
+일단 영상을 쉽게 받아들이고 간단히 처리할 수 있는 느낌이여서 재밌다. ^^
 
 
 *  *  *
@@ -69,3 +86,4 @@ cv2.destroyAllWindows()
 1. [OpenCV Python TUTORIAL #4 for Face Recognition and Identification](https://www.youtube.com/watch?v=PmZ29Vta7Vc)
    - [Github](https://github.com/jeonggunlee/OpenCV-Python-Series)
 2. https://pypi.org/project/opencv-python/
+3. https://opencv-python.readthedocs.io/en/latest/doc/02.videoStart/videoStart.html
