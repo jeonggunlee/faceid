@@ -20,7 +20,7 @@
 
 *  *  *
  OpenCV를 처음 사용하는 사람으로 기존 프로그래밍 지식에 근거하여 분석을 진행한다.
- 일차적으로 OpenCV를 설치하기 위하여 다음 명령어를 사용하였다.
+ 일차적으로 OpenCV를 설치하기 위하여 다음 명령어를 사용하였다 [2].
  
 ```
 run pip install opencv-python-headless if you need only main modules
@@ -33,3 +33,4 @@ run pip install opencv-contrib-python-headless if you need both main and contrib
 
 1. [OpenCV Python TUTORIAL #4 for Face Recognition and Identification](https://www.youtube.com/watch?v=PmZ29Vta7Vc)
    - [Github](https://github.com/jeonggunlee/OpenCV-Python-Series)
+2. https://pypi.org/project/opencv-python/
