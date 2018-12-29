@@ -256,6 +256,20 @@ cv2.destroyAllWindows()
 
 *  *  *
 
+## Further Work
+
+[Face Recognition](https://pypi.org/project/face_recognition/) 에 대해서 살펴보고 활용하기.
+>Recognize and manipulate faces from Python or from the command line with
+>the world’s simplest face recognition library.
+>Built using dlib’s state-of-the-art face recognition
+>built with deep learning. The model has an accuracy of 99.38% on the
+>Labeled Faces in the Wild benchmark.
+>
+
+
+
+*  *  *
+
 # References
 
 1. [OpenCV Python TUTORIAL #4 for Face Recognition and Identification](https://www.youtube.com/watch?v=PmZ29Vta7Vc)
