@@ -136,6 +136,11 @@ recognizer.train(x_train, np.array(y_labels))
 recognizer.save("recognizers/face-trainner.yml")
 ```
 
+이후에 얼굴 데이터베이스로 사용되는 디렉토리에 ```jeong-gun``` 디렉토리를 만들고 나의 사진을 9장 찍어서 넣었다.
+
+![ ](./img/faces)
+![Directory](./img/dir.PNG)
+
 *  *  *
 
 최종적으로 학습된 모델에 근거하여 영상으로 부터 ```검출된 얼굴에 대한 identification을 진행```한다 ((```faces.py```)).
@@ -201,6 +206,9 @@ while(True):
 cap.release()
 cv2.destroyAllWindows()
 ```
+
+
+![Working](./img/working.png)
 
 *  *  *
 
