@@ -19,8 +19,14 @@
 본 문서는 ```https://github.com/codingforentrepreneurs/OpenCV-Python-Series```에 기술된 코드에 대한 분석 및 응용에 대한 문서이다 [1].
 
 *  *  *
+ OpenCV를 처음 사용하는 사람으로 기존 프로그래밍 지식에 근거하여 분석을 진행한다.
+ 일차적으로 OpenCV를 설치하기 위하여 다음 명령어를 사용하였다.
+ 
+```
+run pip install opencv-python-headless if you need only main modules
+run pip install opencv-contrib-python-headless if you need both main and contrib modules 
+```
 
-본 문서는 ```https://github.com/codingforentrepreneurs/OpenCV-Python-Series```에 기술된 코드에 대한 분석 및 응용에 대한 문서이다.
 
 *  *  *
 # References
