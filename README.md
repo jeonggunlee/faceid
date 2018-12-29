@@ -69,7 +69,8 @@ while(True):
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         cv2.imshow('frame', gray)
         
-        if cv2.waitKey(20) & 0xFF == ord('q'):
+        ## waitKey : 20 ms 대기, 0이라면 무한 대기
+        if cv2.waitKey(20) & 0xFF == ord('q'):   # q 버튼이 눌리면 프로그램 while 
             break
 
 # When everything done, release the capture
