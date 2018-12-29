@@ -240,3 +240,4 @@ cv2.destroyAllWindows()
 2. https://pypi.org/project/opencv-python/
 3. https://opencv-python.readthedocs.io/en/latest/doc/02.videoStart/videoStart.html
 4. [Raspberry Pi Face Recognition](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
+5. [라즈베리파이+Google Assist](https://blog.naver.com/renucs/221297676020)
