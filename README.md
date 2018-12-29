@@ -171,12 +171,19 @@ import numpy as np
 import cv2
 import pickle
 
+# 영상에서 "얼굴" 부분을 검출 하기 위한 Classifier 및 학습 데이터 로드
 face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
+# "눈" 부분을 검출하기 위한 Classifier 및 학습 데이터 로드
 eye_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_eye.xml')
+# "미소" 특성을 검출 하기 위한 Classifier 및 학습 데이터 로드
 smile_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_smile.xml')
-
+# 위의 분류기에서 눈인식 및 미소인식은 사용되지 않는다. 
+# 다만, 미소 인식기는 향후 인식한 사람의 기분등에 대한 데이터를 모아 인식한 사람의 속성으로 사용될 수 있을 것이다.
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
+# recognizer가 "face-trainner.yml"을 읽는다.
+# "face-trainner.yml은 응용 엔지니어가 갖고 있는 영상 이미지 데이터에 근거하여 "faces-train.py"를 학습한 데이터이다.
+# "face_cascade"가 얼굴을 검출하면 검출된 얼굴을 기존에 학습한 데이터와 연계하여 matching되는 얼굴을 찾게 된다.
 recognizer.read("./recognizers/face-trainner.yml")
 
 labels = {"person_name": 1}
@@ -184,20 +191,31 @@ with open("pickles/face-labels.pickle", 'rb') as f:
 	og_labels = pickle.load(f)
 	labels = {v:k for k,v in og_labels.items()}
 
+# 영상 취득 시작
 cap = cv2.VideoCapture(0)
 
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    gray  = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray  = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)     # Grayscale로 변환
+    
+    # 영상으로 부터 얼굴 부분을 검출. [7] 참조
+    # 얼굴부분이라고 인식된 위치 박스들의 리스트를 반환한다.
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=5)
+    
+    # 얼굴 부분으로 인식된 각 위치 정보들에 대해서 for loop 진행
     for (x, y, w, h) in faces:
     	#print(x,y,w,h)
+	# 관심 영역 추출 (grayscale 이미지, color 이미지) 두개를 뽑아냄.
     	roi_gray = gray[y:y+h, x:x+w] #(ycord_start, ycord_end)
     	roi_color = frame[y:y+h, x:x+w]
 
     	# recognize? deep learned model predict keras tensorflow pytorch scikit learn
+	# 흑백 얼굴 이미지를 recognizer의 입력으로 주고, recognizer는 인식된 id 와 인식 신뢰도를 반환한다.
     	id_, conf = recognizer.predict(roi_gray)
+	
+	# 신뢰도가 4보다 크거나 같고 85보다 작거나 같을때,  인식된 이름 쓰기
+	# 근데 "conf>=4 and conf <= 85" 조건이 조금 이해가 안된다. ???
     	if conf>=4 and conf <= 85:
     	    #print(5: #id_)
     	    #print(labels[id_])
@@ -210,6 +228,7 @@ while(True):
     	img_item = "7.png"
     	cv2.imwrite(img_item, roi_color)
 
+	# 박스 그리기
     	color = (255, 0, 0) #BGR 0-255 
     	stroke = 2
     	end_cord_x = x + w
@@ -242,3 +261,4 @@ cv2.destroyAllWindows()
 4. [Raspberry Pi Face Recognition](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
 5. [음성인식: 라즈베리파이+Google Assist](https://blog.naver.com/renucs/221297676020)
 6. [라즈베리파이에 구글 음성인식 사용하기 (최신 샘플코드 + 한국어)](http://diy-project.tistory.com/91)
+7. [OBJECT DETECTION : FACE DETECTION USING HAAR CASCADE CLASSFIERS](https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php)
