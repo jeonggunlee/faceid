@@ -346,3 +346,4 @@ face recognition lib를 사용한 인식은 상대적으로 매우 좋은 성능
 10. [OpenCV Face Recognition](https://www.pyimagesearch.com/2018/09/24/opencv-face-recognition/)
 11. [OpenFace](https://cmusatyalab.github.io/openface/)
 12. [Dlib: Deep Learning Library](http://dlib.net)
+13. [Face Clustering](https://ukayzm.github.io/face-clustering/): 모르는 사람 구분
