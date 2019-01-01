@@ -326,7 +326,7 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 
 *  *  *
 
-
+face recognition lib를 사용한 인식은 상대적으로 매우 좋은 성능을 보여주는 것 같다. 아직 많은 수의 사람에 대한 인식을 테스트해보지는 못했지만, 이전에 사용했던 ```cv2.face.LBPHFaceRecognizer```에 비해 훨씬 잘 작동하였다.
 
 *  *  *
 
