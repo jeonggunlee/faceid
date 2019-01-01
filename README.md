@@ -293,3 +293,4 @@ face recognition library를 사용하고자 할때, dlib 설치 어려움이 있
    - [Github](https://github.com/sualab/object-detection-yolov2-tf)
 10. [OpenCV Face Recognition](https://www.pyimagesearch.com/2018/09/24/opencv-face-recognition/)
 11. [OpenFace](https://cmusatyalab.github.io/openface/)
+12. [Dlib: Deep Learning Library](http://dlib.net)
