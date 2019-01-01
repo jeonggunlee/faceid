@@ -271,8 +271,8 @@ cv2.destroyAllWindows()
 >built with deep learning. The model has an accuracy of 99.38% on the
 >Labeled Faces in the Wild benchmark.
 
-face recognition library를 사용하고자 할때, dlib 설치 어려움이 있어서, macbook에서 작업을 하였다.
-
+```face recognition``` library [8, 10]를 사용하고자 할때, 필요한 경우 cmake, dlib [12] 등 설치가 필요하다.
+dlib를 설치할때, 윈도우즈에서 Visual Stdio 버전 등의 mismatch 문제로 설치상에 어려움이 있었다.
 
 
 
