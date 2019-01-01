@@ -273,6 +273,39 @@ cv2.destroyAllWindows()
 
 ```face recognition``` library [8, 10]를 사용하고자 할때, 필요한 경우 cmake, dlib [12] 등 설치가 필요하다.
 dlib를 설치할때, 윈도우즈에서 Visual Stdio 버전 등의 mismatch 문제로 설치상에 어려움이 있었다.
+이 경우에는 Visual Stdio를 Update하여 최신 버전의 개발 환경으로 만든 후 dlib를 설치하면 올바로 설치된다.
+
+```
+C:\Users\eulia\Python>pip install dlib
+Collecting dlib
+  Using cached https://files.pythonhosted.org/packages/35/8d/e4ddf60452e2fb1ce31
+64f774e68968b3f110f1cb4cd353235d56875799e/dlib-19.16.0.tar.gz
+Installing collected packages: dlib
+  Running setup.py install for dlib ... done
+Successfully installed dlib-19.16.0
+
+C:\Users\eulia\Python>pip install face-recognition
+Collecting face-recognition
+  Using cached https://files.pythonhosted.org/packages/3f/ed/ad9a28042f373d4633f
+c8b49109b623597d6f193d3bbbef7780a5ee8eef2/face_recognition-1.2.3-py2.py3-none-an
+y.whl
+Collecting Click>=6.0 (from face-recognition)
+  Using cached https://files.pythonhosted.org/packages/fa/37/45185cb5abbc30d7257
+104c434fe0b07e5a195a6847506c074527aa599ec/Click-7.0-py2.py3-none-any.whl
+Requirement already satisfied: dlib>=19.7 in c:\users\eulia\appdata\local\progra
+ms\python\python37-32\lib\site-packages (from face-recognition) (19.16.0)
+Collecting face-recognition-models>=0.3.0 (from face-recognition)
+  Using cached https://files.pythonhosted.org/packages/cf/3b/4fd8c534f6c0d1b80ce
+0973d01331525538045084c73c153ee6df20224cf/face_recognition_models-0.3.0.tar.gz
+Requirement already satisfied: Pillow in c:\users\eulia\appdata\local\programs\p
+ython\python37-32\lib\site-packages (from face-recognition) (5.3.0)
+Requirement already satisfied: numpy in c:\users\eulia\appdata\local\programs\py
+thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
+...
+...
+...
+```
+
 
 
 
