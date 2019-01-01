@@ -342,7 +342,7 @@ face recognition lib은 face_encoding이란 함수를 사용하는데, face enco
 >
 >그리고 알고리즘은 세 개의 이미지 각각에 대해 현재 생성하고 있는 측정값을 확인합니다. 그런 다음에, #1 과 #2 이미지에 대해 생성한 측정값은 서로 좀더 >가깝게 하고 #2와 #3의 측정값은 좀더 멀어지도록 신경망을 조금 조정합니다
 >
-> [링크 ](https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c)
+> [링크: **Triplet Training** ](https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c)
 
 
 *  *  *
