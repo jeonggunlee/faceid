@@ -306,6 +306,8 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 ...
 ```
 
+![jeonggun](./img/jeonggun.jpg)
+*  *  *
 
 
 
