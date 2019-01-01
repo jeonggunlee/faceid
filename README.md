@@ -328,6 +328,21 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 
 face recognition lib를 사용한 인식은 상대적으로 매우 좋은 성능을 보여주는 것 같다. 아직 많은 수의 사람에 대한 인식을 테스트해보지는 못했지만, 이전에 사용했던 ```cv2.face.LBPHFaceRecognizer```에 비해 훨씬 잘 작동하였다.
 
+face recognition lib은 face_encoding이란 함수를 사용하는데, face encoding에서는 함수 내부적으로 머신러닝의 기술이 사용되는 듯하다 [14].
+
+>딥 컨볼루션 신경망(Deep Convolutional Neural Network)을 훈련시키는 것입니다. 그러나 우리가 마지막으로 했던 것처럼 사진에서 객체를 인식하도록 신경망을 훈련시키는 대신, 각 얼굴에 대해 128개의 측정값을 생성하도록 훈련시킬 것입니다.
+>
+>훈련 과정은 3 개의 얼굴 이미지를 차례 대로 확인하는 것입니다.
+>
+>1. 훈령용 아는 사람의 얼굴 사진 적재(load)
+>
+>2. 동일한 아는 사람의 다른 사진 적재
+>
+>3. 전혀 다른 사람의 사진 적재
+>
+>그리고 알고리즘은 세 개의 이미지 각각에 대해 현재 생성하고 있는 측정값을 확인합니다. 그런 다음에, #1 과 #2 이미지에 대해 생성한 측정값은 서로 좀더 >가깝게 하고 #2와 #3의 측정값은 좀더 멀어지도록 신경망을 조금 조정합니다
+>
+
 *  *  *
 
 # References
@@ -347,3 +362,4 @@ face recognition lib를 사용한 인식은 상대적으로 매우 좋은 성능
 11. [OpenFace](https://cmusatyalab.github.io/openface/)
 12. [Dlib: Deep Learning Library](http://dlib.net)
 13. [Face Clustering](https://ukayzm.github.io/face-clustering/): 모르는 사람 구분
+14. [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)](https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c): face encoding에 대한 
