@@ -309,6 +309,7 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 다음은 학습에 사용한 사진이다.
 ![jeonggun](./img/jeonggun.jpg)
 
+*  *  *
 다음은 ```학습전```과 ```학습후``` 카메라로 부터 받은 영상을 인식한 결과이다.
 
 ```학습전```
@@ -318,6 +319,10 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 
 ```학습후```
 ![jeonggun](./img/jglee1.PNG)
+
+오바마 대통령과 나! ^^
+![jeonggun](./img/jglee2.PNG)
+
 
 *  *  *
 
