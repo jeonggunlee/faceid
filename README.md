@@ -2,7 +2,7 @@
 - Start: 29 Dec. 2018
 - UPDATE: 1 Jan. 2018: face recognition library 설치 및 test / 분석
 
-[Part 2: OpenFace를 활용한 인식](./README.md)
+[Part 2: OpenFace를 활용한 인식](./README2.md)
 
 ## Face Detection and Identification for Smart Toy: Geomex Soft.
 
