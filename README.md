@@ -262,7 +262,7 @@ cv2.destroyAllWindows()
 
 *  *  *
 
-## Further Work
+## Face Recognition library 활용.
 
 [Face Recognition](https://pypi.org/project/face_recognition/) 에 대해서 살펴보고 활용하기 [8].
 >Recognize and manipulate faces from Python or from the command line with
@@ -270,7 +270,9 @@ cv2.destroyAllWindows()
 >Built using dlib’s state-of-the-art face recognition
 >built with deep learning. The model has an accuracy of 99.38% on the
 >Labeled Faces in the Wild benchmark.
->
+
+face recognition library를 사용하고자 할때, dlib 설치 어려움이 있어서, macbook에서 작업을 하였다.
+
 
 
 
