@@ -331,7 +331,7 @@ thon\python37-32\lib\site-packages (from face-recognition) (1.15.3)
 
 face recognition lib를 사용한 인식은 상대적으로 매우 좋은 성능을 보여주는 것 같다. 아직 많은 수의 사람에 대한 인식을 테스트해보지는 못했지만, 이전에 사용했던 ```cv2.face.LBPHFaceRecognizer```에 비해 훨씬 잘 작동하였다.
 
-face recognition lib은 face_encoding이란 함수를 사용하는데, face encoding에서는 함수 내부적으로 머신러닝의 기술이 사용되는 듯하다 [14].
+face recognition lib은 ```face_encoding```이란 함수를 사용하는데, face encoding에서는 함수 내부적으로 머신러닝의 기술이 사용되는 듯하다 [14].
 
 >딥 컨볼루션 신경망(Deep Convolutional Neural Network)을 훈련시키는 것입니다. 그러나 우리가 마지막으로 했던 것처럼 사진에서 객체를 인식하도록 신경망을 훈련시키는 대신, 각 얼굴에 대해 128개의 측정값을 생성하도록 훈련시킬 것입니다.
 >
@@ -347,6 +347,8 @@ face recognition lib은 face_encoding이란 함수를 사용하는데, face enco
 >
 > [링크: **Triplet Training** ](https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c)
 >
+
+face recognition과 관련하여 **Face Encoding**과 **Triplet Training**에 대해서는 자세히 살펴볼 여지가 있다.
 
 *  *  *
 
@@ -364,11 +366,12 @@ import cv2
 # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
 # Get a reference to webcam #0 (the default one)
+# 디폴트 비디오카메라로 부터 영상 취득
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-obama_image = face_recognition.load_image_file("obama.jpg")
-obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+obama_image = face_recognition.load_image_file("obama.jpg")            # 이미지 로드
+obama_face_encoding = face_recognition.face_encodings(obama_image)[0]  # 로드된 이미지로부터 encoding 정보 취득
 
 # Load a second sample picture and learn how to recognize it.
 biden_image = face_recognition.load_image_file("biden.jpg")
@@ -382,12 +385,14 @@ chaeyoung_image = face_recognition.load_image_file("chaeyoung.jpg")
 chaeyoung_face_encoding = face_recognition.face_encodings(chaeyoung_image)[0]
 
 # Create arrays of known face encodings and their names
+# 등록된 사람에 대한 encoding 정보 list
 known_face_encodings = [
     obama_face_encoding,
     biden_face_encoding,
     jeonggun_face_encoding,
     chaeyoung_face_encoding
 ]
+# 등록된 사람에 대한 label 정보
 known_face_names = [
     "Barack Obama",
     "Joe Biden",
@@ -395,30 +400,36 @@ known_face_names = [
     "Chae-Young"
 ]
 
+# 실시간 Face Identification
 while True:
     # Grab a single frame of video
     ret, frame = video_capture.read()
 
     # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
-    rgb_frame = frame[:, :, ::-1]
+    rgb_frame = frame[:, :, ::-1]  # X, Y, channel(R,G,B)
 
     # Find all the faces and face enqcodings in the frame of video
+    # 영사으로부터 얼굴 위치 탐색
     face_locations = face_recognition.face_locations(rgb_frame)
+    # 탐색된 얼굴을 encoding하여 특징 추출
     face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
 
     # Loop through each face in this frame of video
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
         # See if the face is a match for the known face(s)
+	# 탐색된 얼굴의 특징과 등록된 얼굴의 특징을 비교
         matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
 
         name = "Unknown"
 
         # If a match was found in known_face_encodings, just use the first one.
+	# 탐색된 얼굴의 특징과 등록된 얼굴의 특징을 비교 후 매치가 있을 경우!
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
 
         # Draw a box around the face
+	# 인식된 얼굴에 Boxing하기
         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
         # Draw a label with a name below the face
