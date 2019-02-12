@@ -59,9 +59,11 @@ sudo pip2 install -r training/requirements.txt
 **사진 변환하기**
 학습시킬 얼굴 이미지는 얼굴 부분만 추출한 뒤 얼굴이 같은 위치에 오도록 변환시켜야 한다.
 옵션은 두 가지가 있는데 눈 바깥쪽과 코를 정렬하는 outerEyesAndNose, 눈 안쪽과 입술을 정렬하는 innerEyesAndBottomLip 이 있다.
+학습에 이용할 얼굴 이미지는 쉽게 구할 수 있는 연예인 이미지이며 twice 일부 멤버, 닮은꼴 연예인으로 유명한 박소담과 김고은의 이미지와 내 사진을 각각 20장씩 저장하였다.
+변환에는 openface에서 제공된 소스코드를 사용하였다.
 ```
 cd openface
-./util/align-dlib.py /home/ubuntu/artist_faces/input_001 align outerEyesAndNose /home/ubuntu/artist_faces/model/aligned-images_exo/
+./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
 ```
 
 
