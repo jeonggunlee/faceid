@@ -67,6 +67,7 @@ cd openface
 ./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
 ```
 좌측이 변환되기 전의 사진이며 우측은 좌측에서 얼굴만을 추출하여 눈과 코의 위치를 조정한 사진이다.
+얼굴을 탐색하는 능력이 뛰어나다는 것을 알 수 있다.
 ![example003](https://user-images.githubusercontent.com/39741011/52658821-4ba41380-2f3f-11e9-9472-60110e5cea45.png)
 
 변환된 이미지들을 기학습된 DNN모델을 사용하여 각 얼굴에 대해 128개의 측정값을 얻는다.
@@ -80,7 +81,99 @@ cd openface
 ./demos/classifier.py train /home/wyh/face_image/embeddings/
 ```
 
+학습된 결과로 얼굴 인식을 진행한다.
+**cam_identify.py**
+```python
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+import cv2
+import dlib
+from skimage import io
+import sys
+import openface
+import os
+import pickle
 
+import numpy as np
+np.set_printoptions(precision=2)
+
+face_detector = dlib.get_frontal_face_detector()
+win = dlib.image_window()
+frame_cycle = 2
+frame_check = 0
+modelPath = '/home/wyh/OpenFace/openface/models/openface/nn4.small2.v1.t7'
+
+cam = cv2.VideoCapture(0)
+#cam.set(3, 1280)
+#cam.set(4, 720)
+if len(sys.argv) != 3:
+	quit(0)
+
+# 얼굴 정렬을 위한 클래스
+align = openface.AlignDlib(sys.argv[1])
+net = openface.TorchNeuralNet(model=modelPath)
+
+while True:
+	ret_val, img = cam.read()
+
+	if frame_check%frame_cycle == 0:
+		frame_check = 1
+
+		img_resize = cv2.resize(img, (0, 0), fx=0.25, fy=0.25)
+
+		#detected_faces = face_detector(img_resize, 1)
+
+		detected_faces = align.getAllFaceBoundingBoxes(img_resize)
+
+		aligned_faces = []
+		for detected_face in detected_faces:
+			aligned_faces.append(align.align(96, img_resize, detected_face, landmarkIndices=openface.AlignDlib.OUTER_EYES_AND_NOSE))
+
+		reps = []
+		for aligned_face in aligned_faces:
+			reps.append(net.forward(aligned_face))
+
+		with open(sys.argv[2]) as f:
+			if sys.version_info[0] < 3:
+				(le, clf) = pickle.load(f)
+			else:
+				(le, clf) = pickle.load(f, encoding='latin1')
+
+		persons = []
+		confidences = []
+		for rep in reps:
+			rep = rep.reshape(1, -1)
+
+			predictions = clf.predict_proba(rep).ravel()
+			maxI = np.argmax(predictions)
+			persons.append(le.inverse_transform(maxI))
+			confidences.append(predictions[maxI])
+
+		for idx, person in enumerate(persons):
+			top = detected_faces[idx].top() * 4
+			bottom = detected_faces[idx].bottom() * 4
+			left = detected_faces[idx].left() * 4
+			right = detected_faces[idx].right() * 4
+
+			cv2.rectangle(img, (left, top), (right, bottom), (0, 255, 0), 2)
+			cv2.rectangle(img, (left, bottom), (right, bottom+25), (0, 255, 0), -1)
+			cv2.putText(img, "{} @{:.2f}".format(person, confidences[idx]), (left, bottom+20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 2)
+		cv2.imshow("Cam Viewer", img)
+
+	else:
+		frame_check = frame_check+1
+
+	#cv2.imshow("Cam Viewer", img)
+
+	key = cv2.waitKey(1)
+
+	if key%256 == 27:
+		break
+	if key%256 == 99:
+		cv2.imwrite('opencv.png', img)
+		print("Captured");
+
+```
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
 2. https://github.com/cmusatyalab/openface
