@@ -65,7 +65,9 @@ sudo pip2 install -r training/requirements.txt
 cd openface
 ./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
 ```
-![example001](https://user-images.githubusercontent.com/39741011/52658358-29f65c80-2f3e-11e9-85e9-a1265550be4d.png)
+좌측이 변환되기 전의 사진이며 우측은 좌측에서 얼굴만을 추출하여 눈과 코의 위치를 조정한 사진이다.
+![example003](https://user-images.githubusercontent.com/39741011/52658821-4ba41380-2f3f-11e9-9472-60110e5cea45.png)
+
 
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
