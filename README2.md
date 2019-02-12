@@ -64,7 +64,8 @@ sudo pip2 install -r training/requirements.txt
 변환에는 openface에서 제공된 소스코드를 사용하였다.
 ```
 cd openface
-./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
+./util/align-dlib.py [학습할 이미지들이 저장된 디렉토리] align [outerEyesAndNose or innerEyesAndBottomLip] [조정된 이미지를 저장할 디렉토리]
+# ./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
 ```
 좌측이 변환되기 전의 사진이며 우측은 좌측에서 얼굴만을 추출하여 눈과 코의 위치를 조정한 사진이다.
 얼굴을 탐색하는 능력이 뛰어나다는 것을 알 수 있다.
@@ -72,13 +73,15 @@ cd openface
 
 변환된 이미지들을 기학습된 DNN모델을 사용하여 각 얼굴에 대해 128개의 측정값을 얻는다.
 ```
- ./batch-represent/main.lua -outDir /home/wyh/face_image/embeddings/ -data /home/wyh/face_image/aligned_image
+./batch-represent/main.lua -outDir [측정값이 저장될 디렉토리] -data [조정된 이미지들이 저장된 디렉토리]
+# ./batch-represent/main.lua -outDir /home/wyh/face_image/embeddings/ -data /home/wyh/face_image/aligned_image
 ```
 
 위의 결과값을 사용하여 분류기를 훈련시킨다.
 그 결과로 embeddings 디렉토리에 classifiers.pkl 이 생성된다.
 ```
-./demos/classifier.py train /home/wyh/face_image/embeddings/
+./demos/classifier.py train [측정값이 ]
+# ./demos/classifier.py train /home/wyh/face_image/embeddings/
 ```
 
 학습된 결과로 얼굴 인식을 진행한다.  
@@ -183,6 +186,12 @@ while True:
 		cv2.imwrite('opencv.png', img)
 		print("Captured");
 
+```
+
+```
+./cam_identify.py [기학습된 DNN 모델: openface/models/openface/nn4.small2.v1.t7] [얼굴 조정을 위한 68개의 랜드마크 데이터: openface/models/dlib/shape_predictor_68_face_landmarks.dat] [학습된 결과: classifier.pkl]
+# ./cam_identify.py /home/wyh/OpenFace/openface/models/openface/nn4.small2.v1.t7 
+ /home/wyh/OpenFace/openface/models/dlib/shape_predictor_68_face_landmarks.dat /home/wyh/face_image/embeddings/classifier.pkl
 ```
 **실행결과**
 ![result1](https://user-images.githubusercontent.com/39741011/52668492-0db2e980-2f57-11e9-8b09-d936e4e50ee5.png)
