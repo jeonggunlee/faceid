@@ -80,7 +80,7 @@ cd openface
 위의 결과값을 사용하여 분류기를 훈련시킨다.
 그 결과로 embeddings 디렉토리에 classifiers.pkl 이 생성된다.
 ```
-./demos/classifier.py train [측정값이 ]
+./demos/classifier.py train [측정값이 저장된 ]
 # ./demos/classifier.py train /home/wyh/face_image/embeddings/
 ```
 
