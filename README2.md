@@ -37,7 +37,34 @@ sudo cp dlib.so /usr/local/lib/python2.7/dist-packages
 
 **torch**
 ```
+git clone https://github.com/torch/distro.git --recursive
+cd torch/
+./install-deps
+./install.sh
+source ~/.bashrc
+for NAME in dpnn nn optim optnet csvigo cutorch cunn fblualib torchx tds; do luarocks install $NAME; done
 ```
+
+**OpenFace**
+```
+git clone https://github.com/cmusatyalab/openface.git --recursive
+cd openface
+./models/get-models.sh
+sudo pip2 install -r requirements.txt
+sudo python2 setup.py install 
+sudo pip2 install -r demos/web/requirements.txt
+sudo pip2 install -r training/requirements.txt
+```
+
+**사진 변환하기**
+학습시킬 얼굴 이미지는 얼굴 부분만 추출한 뒤 얼굴이 같은 위치에 오도록 변환시켜야 한다.
+옵션은 두 가지가 있는데 눈 바깥쪽과 코를 정렬하는 outerEyesAndNose, 눈 안쪽과 입술을 정렬하는 innerEyesAndBottomLip 이 있다.
+```
+cd openface
+./util/align-dlib.py /home/ubuntu/artist_faces/input_001 align outerEyesAndNose /home/ubuntu/artist_faces/model/aligned-images_exo/
+```
+
+
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
 2. https://github.com/cmusatyalab/openface
 3. [엑소사랑하자 - OpenFace로 우리 오빠들 얼굴 인식하기](https://www.popit.kr/openface-exo-member-face-recognition/)
