@@ -5,9 +5,9 @@
 OpenFace를 이용하기 위해 필요한 라이브러리와 설치법은 다음과 같다.
 
 **OpenCV**
-'''
+```
 sudo apt-get update
-'''
+```
 
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
