@@ -182,7 +182,10 @@ while True:
 트와이스 멤버들 또한 잘 인식되는 것을 볼 수 있다.
 
 ![result3](https://user-images.githubusercontent.com/39741011/52668714-a0538880-2f57-11e9-819c-f7629b2a3130.png)
-닮은꼴 연예인으로 유명한 김고은과 박소담도 잘 구분한다.
+닮은꼴 연예인으로 유명한 김고은과 박소담도 잘 구분된다.
+
+**개선할 점**  
+실시간으로 얼굴인식이 가능하지만 웹캠의 프레임이 낮아지는 현상이 발생한다. 좀 더 빠르게 처리할 수 있는 방법이 필요하다.
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
 2. https://github.com/cmusatyalab/openface
