@@ -60,6 +60,7 @@ sudo pip2 install -r training/requirements.txt
 학습시킬 얼굴 이미지는 얼굴 부분만 추출한 뒤 얼굴이 같은 위치에 오도록 변환시켜야 한다.
 옵션은 두 가지가 있는데 눈 바깥쪽과 코를 정렬하는 outerEyesAndNose, 눈 안쪽과 입술을 정렬하는 innerEyesAndBottomLip 이 있다.
 학습에 이용할 얼굴 이미지는 쉽게 구할 수 있는 연예인 이미지이며 twice 일부 멤버, 닮은꼴 연예인으로 유명한 박소담과 김고은의 이미지와 내 사진을 각각 20장씩 저장하였다.
+![example004](https://user-images.githubusercontent.com/39741011/52662393-6f6b5780-2f47-11e9-8984-3021f7193508.png)
 변환에는 openface에서 제공된 소스코드를 사용하였다.
 ```
 cd openface
@@ -67,6 +68,17 @@ cd openface
 ```
 좌측이 변환되기 전의 사진이며 우측은 좌측에서 얼굴만을 추출하여 눈과 코의 위치를 조정한 사진이다.
 ![example003](https://user-images.githubusercontent.com/39741011/52658821-4ba41380-2f3f-11e9-9472-60110e5cea45.png)
+
+변환된 이미지들을 기학습된 DNN모델을 사용하여 각 얼굴에 대해 128개의 측정값을 얻는다.
+```
+ ./batch-represent/main.lua -outDir /home/wyh/face_image/embeddings/ -data /home/wyh/face_image/aligned_image
+```
+
+위의 결과값을 사용하여 분류기를 훈련시킨다.
+그 결과로 embeddings 디렉토리에 classifiers.pkl 이 생성된다.
+```
+./demos/classifier.py train /home/wyh/face_image/embeddings/
+```
 
 
 
