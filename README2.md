@@ -81,7 +81,7 @@ cd openface
 ./demos/classifier.py train /home/wyh/face_image/embeddings/
 ```
 
-학습된 결과로 얼굴 인식을 진행한다.
+학습된 결과로 얼굴 인식을 진행한다.  
 **cam_identify.py**
 ```python
 #! /usr/bin/env python
@@ -174,6 +174,15 @@ while True:
 		print("Captured");
 
 ```
+**실행결과**
+![result1](https://user-images.githubusercontent.com/39741011/52668492-0db2e980-2f57-11e9-8b09-d936e4e50ee5.png)
+정면은 물론 옆 얼굴도 인식이 잘 된다.
+
+![result2](https://user-images.githubusercontent.com/39741011/52668659-7bf7ac00-2f57-11e9-9004-1b8b83ebad5f.png)
+트와이스 멤버들 또한 잘 인식되는 것을 볼 수 있다.
+
+![result3](https://user-images.githubusercontent.com/39741011/52668714-a0538880-2f57-11e9-819c-f7629b2a3130.png)
+닮은꼴 연예인으로 유명한 김고은과 박소담도 잘 구분한다.
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
 2. https://github.com/cmusatyalab/openface
