@@ -1,3 +1,5 @@
+Update: 2월 12일
+
 ## OpenFace를 활용한 얼굴 인식
 
 이 문서에서는 OpenFace를 이용한 얼굴 인식을 소개한다.
