@@ -1,6 +1,8 @@
 # faceid
 - Start: 29 Dec. 2018
-- UPDATE: 1 Jan. 2018: face recognition library 설치 및 test / 분석
+- UPDATE: 1 Jan. 2018: face recognition library 설치 및 test / 분석 (mainly by Jeong-Gun Lee)
+- UPDATE: 12 Feb. 2019: Part 2: OpenFace를 활용한 인식 (mainly by Yunhee Woo)
+
 
 ### [Part 2: OpenFace를 활용한 인식](./README2.md)
 
