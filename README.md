@@ -11,7 +11,9 @@
 #### Jeong-Gun Lee
 > School of Software, Hallym University
 > Email : jeonggun.lee@gmail.com
-
+#### Yunhee Woo
+> Department of Computer Engineering (Graduate School), Hallym University
+> Email : unhwoo@naver.com
 *  *  *
 
 인지형 스마트 토이를 만들기 위한 가장 기본적인 기능으로, 현재 토이 앞에 위치한 사람을 인식하는 것이 필요하다.
