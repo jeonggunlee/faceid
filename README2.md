@@ -1,5 +1,8 @@
 Update: 2월 12일
 
+Yunhee Woo, Department of Computer Engineering, Hallym University
+한림대학교 컴퓨터공학과 박사과정: 우윤희
+
 ## OpenFace를 활용한 얼굴 인식
 
 이 문서에서는 OpenFace를 이용한 얼굴 인식을 소개한다.
@@ -23,7 +26,7 @@ make
 sudo make install
 ```
 
-**dlib**
+**dlib (Deep Learning Library, 다양한 머신러닝 라이브러리 함수 제공)**
 ```
 mkdir -p ~/src
 cd ~/src
@@ -37,7 +40,7 @@ cmake --build . --config Release
 sudo cp dlib.so /usr/local/lib/python2.7/dist-packages
 ```
 
-**torch**
+**torch (Deep Learning Framework)**
 ```
 git clone https://github.com/torch/distro.git --recursive
 cd torch/
@@ -59,35 +62,41 @@ sudo pip2 install -r training/requirements.txt
 ```
 
 **사진 변환하기**  
-학습시킬 얼굴 이미지는 얼굴 부분만 추출한 뒤 얼굴이 같은 위치에 오도록 변환시켜야 한다.
-옵션은 두 가지가 있는데 눈 바깥쪽과 코를 정렬하는 outerEyesAndNose, 눈 안쪽과 입술을 정렬하는 innerEyesAndBottomLip 이 있다.
-학습에 이용할 얼굴 이미지는 쉽게 구할 수 있는 연예인 이미지이며 twice 일부 멤버, 닮은꼴 연예인으로 유명한 박소담과 김고은의 이미지와 내 사진을 각각 20장씩 저장하였다.
+학습시킬 얼굴 이미지는 얼굴 부분만 추출한 뒤, 얼굴이 정규화된 고정위 위치에 최대한 맞추어 (alignment) 지도록 변환시켜야 한다.
+옵션은 두 가지가 있는데 눈 바깥쪽과 코를 정렬하는 ``outerEyesAndNose``, 눈 안쪽과 입술을 정렬하는 ``innerEyesAndBottomLip`` 이 있다.
+학습에 이용할 얼굴 이미지는 쉽게 구할 수 있는 연예인 이미지이며 twice 일부 멤버, 닮은꼴 연예인으로 유명한 ``박소담``과 ``김고은``의 이미지와 내 사진을 각각 20장씩 저장하였다.
+
 ![example004](https://user-images.githubusercontent.com/39741011/52662393-6f6b5780-2f47-11e9-8984-3021f7193508.png)
 변환에는 openface에서 제공된 소스코드를 사용하였다.
+
 ```
 cd openface
 ./util/align-dlib.py [학습할 이미지들이 저장된 디렉토리] align [outerEyesAndNose or innerEyesAndBottomLip] [조정된 이미지를 저장할 디렉토리]
 # ./util/align-dlib.py /home/wyh/face_image/input_image align outerEyesAndNose /home/wyh/face_image/aligned_image/
 ```
+
 좌측이 변환되기 전의 사진이며 우측은 좌측에서 얼굴만을 추출하여 눈과 코의 위치를 조정한 사진이다.
 얼굴을 탐색하는 능력이 뛰어나다는 것을 알 수 있다.
+
 ![example003](https://user-images.githubusercontent.com/39741011/52658821-4ba41380-2f3f-11e9-9472-60110e5cea45.png)
 
-변환된 이미지들을 기학습된 DNN모델을 사용하여 각 얼굴에 대해 128개의 측정값을 얻는다.
+변환된 이미지들을 기학습된 DNN모델을 사용하여 각 얼굴에 대해 128개의 특징값을 얻는다.
+
 ```
-./batch-represent/main.lua -outDir [측정값이 저장될 디렉토리] -data [조정된 이미지들이 저장된 디렉토리]
+./batch-represent/main.lua -outDir [특징값이 저장될 디렉토리] -data [조정된 이미지들이 저장된 디렉토리]
 # ./batch-represent/main.lua -outDir /home/wyh/face_image/embeddings/ -data /home/wyh/face_image/aligned_image
 ```
 
-위의 결과값을 사용하여 분류기를 훈련시킨다.
+위의 결과 값을 사용하여 분류기를 훈련시킨다.
 그 결과로 embeddings 디렉토리에 classifiers.pkl 이 생성된다.
 ```
-./demos/classifier.py train [측정값이 저장된 ]
+./demos/classifier.py train [특징값이 저장된 디렉토리]
 # ./demos/classifier.py train /home/wyh/face_image/embeddings/
 ```
 
 학습된 결과로 얼굴 인식을 진행한다.  
 **cam_identify.py**
+
 ```python
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -206,7 +215,7 @@ while True:
 닮은꼴 연예인으로 유명한 김고은과 박소담도 잘 구분된다.
 
 **개선할 점**  
-정확도에 대해서는 더 많은 사진을 학습에 이용하면 높아질 것이므로 더 많은 사진자료 수집이 필요하다.
+정확도에 대해서는 **더 많은 사진을 학습에 이용**하면 높아질 것이므로 더 많은 사진자료 수집이 필요하다.
 실시간으로 얼굴인식이 가능하지만 웹캠의 프레임이 낮아지는 현상이 발생한다. 좀 더 빠르게 처리할 수 있는 방법이 필요하다.
 
 1. [OpenFace](https://cmusatyalab.github.io/openface/)
